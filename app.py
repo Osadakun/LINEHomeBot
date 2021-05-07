@@ -38,10 +38,10 @@ REMOTE_DB_USER = os.environ['DB_USERNAME']
 REMOTE_DB_PASS = os.environ['DB_PASSWORD']
 #REMOTE_DB_TB = os.environ['REMOTE_DB_TB']
 
-if YOUR_CHANNEL_SECRET is None:
+if CHANNEL_SECRET is None:
     print('Specify LINE_CHANNEL_SECRET.')
     sys.exit(1)
-if YOUR_CHANNEL_ACCESS_TOKEN is None:
+if CHANNEL_ACCESS_TOKEN is None:
     print('Specify LINE_CHANNEL_ACCESS_TOKEN.')
     sys.exit(1)
 
