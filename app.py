@@ -4,7 +4,7 @@ import json
 from decimal import Decimal #金融系の計算で丸め誤差を排除するために必要なライブラリ
 
 try:
-    import MySQLdb
+    import cleardb
 except:
     import pymysql
     pymysql.install_as_MySQLdb()
