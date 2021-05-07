@@ -36,7 +36,7 @@ REMOTE_HOST = os.environ['DB_HOSTNAME']
 REMOTE_DB_NAME = os.environ['DB_NAME']
 REMOTE_DB_USER = os.environ['DB_USERNAME']
 REMOTE_DB_PASS = os.environ['DB_PASSWORD']
-REMOTE_DB_TB = os.environ['REMOTE_DB_TB']
+#REMOTE_DB_TB = os.environ['REMOTE_DB_TB']
 
 if YOUR_CHANNEL_SECRET is None:
     print('Specify LINE_CHANNEL_SECRET.')
