@@ -2,15 +2,9 @@ from sqlalchemy import *
 from sqlalchemy.orm import *
 from sqlalchemy.ext.declarative import declarative_base
 
-# mysqlのDBの設定
-DATABASE = 'postgres://ylcywgvpxrfldl:7f634f2f7881359957c4483720f765f28ef2e78677c230352f4868d05d156bc9@ec2-3-234-22-132.compute-1.amazonaws.com:5432/db7j7l1274gbnb' % (
-    "user_name",
-    "psddword",
-    "host_ip",
-    "db_name",
-)
+
 ENGINE = create_engine(
-    DATABASE,
+    "postgres://ylcywgvpxrfldl:7f634f2f7881359957c4483720f765f28ef2e78677c230352f4868d05d156bc9@ec2-3-234-22-132.compute-1.amazonaws.com:5432/db7j7l1274gbnb",
     encoding = "utf-8",
     echo=True # Trueだと実行のたびにSQLが出力される
 )
