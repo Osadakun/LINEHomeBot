@@ -2,6 +2,7 @@
 from setting import session
 # Userモデルの取得
 from user import *
+from sqlalchemy import *
 
 # DBにレコードの追加
 user = User()
