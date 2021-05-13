@@ -14,3 +14,6 @@ users = session.query(User).all()
 for user in users:
     print(user.name)
 
+@app. route("/")
+def hello_world():
+    return "hello world!"
