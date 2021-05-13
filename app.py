@@ -4,11 +4,12 @@ from hamlish_jinja import HamlishExtension
 from werkzeug import ImmutableDict
 from flask_sqlalchemy import SQLAlchemy
 
-class FlaskWithHamlish(Flask):
-    jinja_options = ImmutableDict(
-        extensions=[HamlishExtension]
-    )
-app = FlaskWithHamlish(__name__)
+#class FlaskWithHamlish(Flask):
+ #   jinja_options = ImmutableDict(
+  #      extensions=[HamlishExtension]
+   # )
+#app = FlaskWithHamlish(__name__)
+app = app = Flask(__name__)
 
 db_uri = os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
