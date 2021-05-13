@@ -13,7 +13,6 @@ app = FlaskWithHamlish(__name__)
 db_uri = os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 db = SQLAlchemy(app)
-db.create_all()
 
 class Entry(db.Model):
     # テーブル名を定義
@@ -23,3 +22,4 @@ class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(), nullable=False)
     body = db.Column(db.String(), nullable=False)
+    db.create_all()
