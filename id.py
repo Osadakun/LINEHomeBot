@@ -42,12 +42,11 @@ def response_message(event):
     profile = line_bot_api.get_profile(event.source.user_id)
 
     status_msg = profile.status_message
-    if status_msg != "None":
         # LINEに登録されているstatus_messageが空の場合は、"なし"という文字列を代わりの値とする
-        status_msg = "なし"
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=profile.user_id))
 
-
-    line_bot_api.reply_message(event.reply_token, messages=profile.user_id)
 
 
 if __name__ == "__main__":
