@@ -20,11 +20,7 @@ line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 @app.route("/")
-<<<<<<< HEAD
 def hello_world():
-=======
-hello_world():
->>>>>>> e2e5c0461d8618dc96f49025db495ca529d2eb38
     return "HelloWorld!"        
 
 @app.route("/callback", methods=['POST'])
