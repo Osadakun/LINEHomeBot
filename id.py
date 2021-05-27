@@ -46,7 +46,7 @@ def response_message(event):
         # LINEに登録されているstatus_messageが空の場合は、"なし"という文字列を代わりの値とする
         status_msg = "なし"
 
-    messages = TemplateSendMessage(text=profile.user_id)
+    messages = TemplateSendMessage( text=f"User Id: {profile.user_id})
 
     line_bot_api.reply_message(event.reply_token, messages=messages)
 
