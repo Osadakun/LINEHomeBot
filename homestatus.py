@@ -28,7 +28,6 @@ line_bot_api = LineBotApi(ACCESS_TOKEN)
 
 
 @app.route("/")
-@app.route("/")
 def hello_world():
     return "HelloWorld!"
 
@@ -52,11 +51,10 @@ def response_message(event):
     conn = psycopg2.connect(dsn)
     cur = conn.cursor()
     cur.execute('SELECT * FROM Family_Member')
-    for r in cur:
-        line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=r)
-        )
+    line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=cur)
+    )
     cur.execue('COMMIT')
 
 
