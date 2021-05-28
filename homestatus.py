@@ -1,4 +1,4 @@
-#import config
+import config
 import psycopg2
 from flask import Flask, render_template, g, request, abort
 import os
@@ -15,12 +15,12 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-PG_URL = os.environ["DATABASE_URL"]
-ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
-CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
+#PG_URL = os.environ["DATABASE_URL"]
+#ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
+#CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
-#line_bot_api = LineBotApi(config.ACCESS_TOKEN)
-#handler = WebhookHandler(config.CHANNEL_SECRET)
+line_bot_api = LineBotApi(config.ACCESS_TOKEN)
+handler = WebhookHandler(config.CHANNEL_SECRET)
 
 handler = WebhookHandler(CHANNEL_SECRET)
 line_bot_api = LineBotApi(ACCESS_TOKEN)
@@ -47,7 +47,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
-    dsn = PG_URL
+    dsn = config.PG_URL
     conn = psycopg2.connect(dsn)
     cur = conn.cursor()
     cur.execute('SELECT * FROM Family_Member')
