@@ -1,1 +1,1 @@
-web: python id.py
+web: python homestatus.py
