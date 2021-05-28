@@ -34,17 +34,18 @@ def callback():
         abort(400)
 
     return 'OK'
-
-dsn = config.PG_URL
-conn = psycopg2.connect(dsn)
-cur = conn.cursor()
-cur.execute('SELECT * FROM Family_Member')
-for r in cur:
-  line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=r)
-  )
-cur.execue('COMMIT')
+@handler.add(MessageEvent, message=TextMessage)
+def response_message(event):
+    dsn = config.PG_URL
+    conn = psycopg2.connect(dsn)
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM Family_Member')
+    for r in cur:
+        line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=r)
+        )
+    cur.execue('COMMIT')
 
 
 if __name__ == "__main__":
