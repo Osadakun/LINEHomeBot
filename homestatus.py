@@ -1,7 +1,6 @@
 import config
 import psycopg2
 from flask import Flask, render_template, g, request, abort
-from flask_sqlalchemy import SQLAlchemy
 
 from linebot import (
     LineBotApi, WebhookHandler
