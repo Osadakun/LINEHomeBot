@@ -1,5 +1,6 @@
 import os
 import psycopg2
+import config
 
 from flask import Flask, request, abort
 from linebot import (
@@ -46,7 +47,7 @@ def response_message(event):
         # LINEに登録されているstatus_messageが空の場合は、"なし"という文字列を代わりの値とする
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=profile.user_id))
+        TextSendMessage(text=PG_URL))
 
 
 
