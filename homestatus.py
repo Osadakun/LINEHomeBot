@@ -1,7 +1,8 @@
 import config
 import psycopg2
+from flask import Flask, render_template, g, request, abort
+from flask_sqlalchemy import SQLAlchemy
 
-from flask import Flask, request, abort
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -35,15 +36,16 @@ def callback():
 
     return 'OK'
 
-conn = psycopg2.connect(dsn=config.PG_URL)
+dsn = config.PG_URL
+conn = psycopg2.connect(dsn)
 cur = conn.cursor()
 cur.execute('SELECT * FROM Family_Member')
-cur.commit()
-results = cur.fetchall()
-for r in results:
+for r in cur:
   line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=r))
+        TextSendMessage(text=r)
+  )
+cur.execue('COMMIT')
 
 
 if __name__ == "__main__":
