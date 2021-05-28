@@ -51,10 +51,11 @@ def response_message(event):
     conn = psycopg2.connect(dsn)
     cur = conn.cursor()
     cur.execute('SELECT * FROM Family_Member')
-    line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=cur)
-    )
+    return cur
+#   line_bot_api.reply_message(
+ #           event.reply_token,
+  #          TextSendMessage(text=cur)
+   # )
     cur.execue('COMMIT')
 
 
