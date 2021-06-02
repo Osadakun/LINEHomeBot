@@ -18,7 +18,6 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi(config.ACCESS_TOKEN)
 handler = WebhookHandler(config.CHANNEL_SECRET)
-UserID = event.sorce.user_id
 
 stadict = {"起きてる":1,"寝てる":2,"家にいる":3,"仕事中":4,"会議中":5,"仕事中(夜の)":6,"買い物中":7,"運転中":8,"練習中":9,"友達といる":10,"温泉いる":11,"授業中":12,"ラボいる":13,"外食中":14,"出勤中":15,"外出中":16}
 
@@ -66,6 +65,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
+    UserID = event.sorce.user_id
     dsn = config.PG_URL
     conn = psycopg2.connect(dsn)
     cur = conn.cursor()
@@ -75,7 +75,7 @@ def response_message(event):
             event.reply_token,
             TextSendMessage(UserID)
     )
-    cur.execue('COMMIT')
+#    cur.execue('COMMIT')
 
 
 if __name__ == "__main__":
