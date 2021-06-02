@@ -2,6 +2,7 @@ import config
 import psycopg2
 from flask import Flask, render_template, g, request, abort
 import os
+import json
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -15,14 +16,34 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-#PG_URL = os.environ["DATABASE_URL"]
-#ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
-#CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
-
 line_bot_api = LineBotApi(config.ACCESS_TOKEN)
 handler = WebhookHandler(config.CHANNEL_SECRET)
+UserID = event.sorce.user_id
 
+stadict = {"起きてる":1,"寝てる":2,"家にいる":3,"仕事中":4,"会議中":5,"仕事中(夜の)":6,"買い物中":7,"運転中":8,"練習中":9,"友達といる":10,"温泉いる":11,"授業中":12,"ラボいる":13,"外食中":14,"出勤中":15,"外出中":16}
 
+confirm = {
+    "type": "template",
+    "altText": "this is a confirm template",
+    "template": {
+        "type": "confirm",
+        "actions": [
+            {
+                "type": "message",
+                "label": "はい",
+                "text": "はい"
+            },
+            {
+                "type": "message",
+                "label": "いいえ",
+                "text": "いいえ"
+            }
+        ],
+        "text": status
+    }
+}
+
+confirm_obj = FlexSendMessage.new_from_json_dict(confirm)
 
 
 @app.route("/")
@@ -50,10 +71,10 @@ def response_message(event):
     cur = conn.cursor()
     cur.execute('SELECT * FROM Family_Member')
     return cur
-#   line_bot_api.reply_message(
- #           event.reply_token,
-  #          TextSendMessage(text=cur)
-   # )
+    line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(UserID)
+    )
     cur.execue('COMMIT')
 
 

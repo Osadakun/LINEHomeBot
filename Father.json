@@ -1,0 +1,63 @@
+{
+    "type": "template",
+    "altText": "this is a buttons template",
+    "template": {
+        "type": "buttons",
+        "actions": [
+            {
+                "type": "message",
+                "label": "寝てる",
+                "text": "寝てる"
+            },
+            {
+                "type": "message",
+                "label": "起きてる",
+                "text": "起きてる"
+            },
+            {
+                "type": "message",
+                "label": "家にいる",
+                "text": "家にいる"
+            },
+            {
+                "type": "message",
+                "label": "仕事中",
+                "text": "仕事中"
+            },
+            {
+                "type": "message",
+                "label": "出勤中",
+                "text": "出勤中"
+            },
+            {
+                "type": "message",
+                "label": "会議中",
+                "text": "会議中"
+            },
+            {
+                "type": "message",
+                "label": "仕事中(夜の)",
+                "text": "仕事中(夜の)"
+            },
+            {
+                "type": "message",
+                "label": "買い物中",
+                "text": "買い物中" 
+            },
+            {
+                "type":"message",
+                "label":"外出中",
+                "text":"外出中"
+            },
+            {
+                "type": "message",
+                "label": "運転中",
+                "text": "運転中"
+            }
+
+        ],
+    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
+    "title": "おとうの情報",
+    "text": "今の状態を選んでください"
+  }
+}
