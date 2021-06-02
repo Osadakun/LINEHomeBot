@@ -42,7 +42,7 @@ confirm = {
     }
 }
 
-confirm_obj = FlexSendMessage.new_from_json_dict(confirm)
+#confirm_obj = FlexSendMessage.new_from_json_dict(confirm)
 
 
 @app.route("/")
