@@ -70,7 +70,7 @@ def response_message(event):
     conn = psycopg2.connect(dsn)
     cur = conn.cursor()
     cur.execute('SELECT * FROM Family_Member')
-    return cur
+#    return cur
     line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(UserID)
