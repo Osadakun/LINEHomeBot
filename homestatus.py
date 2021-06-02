@@ -65,7 +65,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
-    UserID = event.sorce.user_id
+    UserID = event.source.user_id
     dsn = config.PG_URL
     conn = psycopg2.connect(dsn)
     cur = conn.cursor()
