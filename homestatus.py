@@ -38,7 +38,7 @@ confirm = {
                 "text": "いいえ"
             }
         ],
-        "text": status
+        "text": "test"
     }
 }
 
