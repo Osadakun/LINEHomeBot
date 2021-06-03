@@ -4,7 +4,6 @@ import psycopg2
 from flask import Flask, render_template, g, request, abort
 import os
 import json
-from dbModel import *
 from linebot.models import *
 
 from linebot import (
