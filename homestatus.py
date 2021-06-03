@@ -1,8 +1,11 @@
 import config
+import mylib
 import psycopg2
 from flask import Flask, render_template, g, request, abort
 import os
 import json
+from dbModel import *
+from linebot.models import *
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -10,16 +13,13 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-from linebot.models import (
-    MessageEvent, TextMessage, MessageAction, TemplateSendMessage,
-    ButtonsTemplate,TextSendMessage)
 
 app = Flask(__name__)
 
 line_bot_api = LineBotApi(config.ACCESS_TOKEN)
 handler = WebhookHandler(config.CHANNEL_SECRET)
 
-stadict = {"$B5/$-$F$k(B":1,"$B?2$F$k(B":2,"$B2H$K$$$k(B":3,"$B;E;vCf(B":4,"$B2q5DCf(B":5,"$B;E;vCf(B($BLk$N(B)":6,"$BGc$$J*Cf(B":7,"$B1?E>Cf(B":8,"$BN}=,Cf(B":9,"$BM'C#$H$$$k(B":10,"$B29@t$$$k(B":11,"$B<x6HCf(B":12,"$B%i%\$$$k(B":13,"$B30?)Cf(B":14,"$B=P6PCf(B":15,"$B30=PCf(B":16}
+stadict = {"起きてる":1,"寝てる":2,"家にいる":3,"仕事中":4,"会議中":5,"仕事中(夜の)":6,"買い物中":7,"運転中":8,"練習中":9,"友達といる":10,"温泉いる":11,"授業中":12,"ラボいる":13,"外食中":14,"出勤中":15,"外出中":16}
 
 confirm = {
     "type": "template",
@@ -29,13 +29,13 @@ confirm = {
         "actions": [
             {
                 "type": "message",
-                "label": "$B$O$$(B",
-                "text": "$B$O$$(B"
+                "label": "はい",
+                "text": "はい"
             },
             {
                 "type": "message",
-                "label": "$B$$$$$((B",
-                "text": "$B$$$$$((B"
+                "label": "いいえ",
+                "text": "いいえ"
             }
         ],
         "text": "test"
@@ -62,14 +62,22 @@ def callback():
         abort(400)
 
     return 'OK'
-
+#@app.route("/responce", methods=['POST'])
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
     UserID = event.source.user_id
-    dsn = config.PG_URL
-    conn = psycopg2.connect(dsn)
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM Family_Member')
+    user_name = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = %s',UserID)
+    if not user_name:
+        line_bot_api. reply_message(
+            event. reply_token,
+            TextSendMessage(text='あなたは登録されてないよ')
+        )
+    else:
+        line_bot_api. reply_message(
+            event. reply_token,
+            TextSendMessage(text=user_name + 'さんこんにちは‼︎')
+    )
+
 #    return cur
     line_bot_api.reply_message(
             event.reply_token,
