@@ -64,7 +64,7 @@ def callback():
 #@app.route("/responce", methods=['POST'])
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
-    UserID = str(event.source.user_id).decode("utf8")
+    UserID = str(event.source.user_id).encode("utf8")
     user_name = mylib.SQL_fetch(config.PG_URL,('SELECT name FROM Family_Member where id = %s',UserID))
     if not user_name:
         line_bot_api. reply_message(
