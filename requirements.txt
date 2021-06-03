@@ -5,6 +5,7 @@ Flask==1.1.2
 future==0.18.2
 greenlet==1.1.0
 gunicorn==20.1.0
+h5py==3.2.1
 heroku==0.1.4
 idna==2.10
 itsdangerous==1.1.0
@@ -13,8 +14,11 @@ line-bot-sdk==1.19.0
 MarkupSafe==1.1.1
 mysql==0.0.2
 mysqlclient==2.0.3
+numpy==1.20.3
+paho-mqtt==1.5.1
 protobuf==3.15.8
 psycopg2==2.8.6
+psycopg2-binary==2.8.6
 PyMySQL==1.0.2
 python-dateutil==1.5
 requests==2.25.1
