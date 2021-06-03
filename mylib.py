@@ -1,10 +1,10 @@
 import psycopg2
 import os
 
-def SQL_fetch(DATABASE_URL,SQL_order):
+def SQL_fetch(DATABASE_URL,*SQL_order):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
-    cursor.execute(SQL_order)
+    cursor.execute(*SQL_order)
     conn.commit()
     message = ''
     first = True 
