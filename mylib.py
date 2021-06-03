@@ -2,11 +2,11 @@ import psycopg2
 import os
 import homestatus
 
-def SQL_fetch(DATABASE_URL,*SQL_order):
+def SQL_fetch(DATABASE_URL,*SQL_order,UserID):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor() 
     vars = homestatus.UserID, detected_language['language'], str(post_id) # tuple
-    cursor.execute(SQL_order,)
+    cursor.execute(SQL_order,vars)
     conn.commit()
     message = ''
     first = True 
