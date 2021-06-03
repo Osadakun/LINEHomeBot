@@ -2,7 +2,7 @@ import psycopg2
 import os
 import homestatus
 
-def SQL_fetch(DATABASE_URL,*SQL_order,UserID):
+def SQL_fetch(DATABASE_URL,*SQL_order,*UserID):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor() 
     vars = homestatus.UserID, detected_language['language'], str(post_id) # tuple
