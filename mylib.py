@@ -26,7 +26,7 @@ def SQL_name(DATABASE_URL,*SQL_order):
         else:
             if first:
                 message = None
-                print('SQL_fetch empty')
+                print('SQL_fetch_empty')
             break
     cursor.close()
     conn.close()
