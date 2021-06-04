@@ -77,7 +77,7 @@ def response_message(event):
             event. reply_token,
             TextSendMessage(text=user_name + 'さんこんにちは‼︎')
         )'''
-    if user_name == 'としき　':
+    if user_name == 'としき ':
         with open('./brother.json') as t:
             brother_status = json.load(t)
         line_bot_api. reply_message(
