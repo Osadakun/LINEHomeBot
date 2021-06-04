@@ -81,7 +81,7 @@ def response_message(event):
     User_name = user_name.split()[0]
     User_name = User_name.encode()
     User_Name = User_name.decode()
-    if User_name == 'としき':
+    if User_Name == 'としき':
         with open('./brother.json') as t:
             brother_status = json.load(t)
         line_bot_api.reply_message(
