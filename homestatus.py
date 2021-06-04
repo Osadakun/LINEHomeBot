@@ -72,7 +72,7 @@ def response_message(event):
     user_name = user_name.encode()
     user_name = user_name.decode()
     if user_name == 'としき':
-        with open('brother.json', encording='utf-8') as f:
+        with open('brother.json', encoding='utf-8') as f:
             to = json.load(f)            
         line_bot_api.reply_message(event.reply_token,
                 [
