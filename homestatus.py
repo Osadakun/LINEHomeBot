@@ -80,6 +80,7 @@ def response_message(event):
                  [
                      FlexSendMessage(alt_text='状態を選んでね',contents = fl)
                  ]
+        )
         fo.close()
 
         '''with open('brother.json', encoding='utf-8') as f:
