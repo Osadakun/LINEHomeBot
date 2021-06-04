@@ -3,7 +3,8 @@ import os
 import homestatus
 
 def SQL_name(DATABASE_URL,*SQL_order):
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    con
+    = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor() 
     cursor.execute(SQL_order[0] + "'" + SQL_order[1] + "'"+ ";")
     conn.commit()
@@ -33,15 +34,15 @@ def SQL_name(DATABASE_URL,*SQL_order):
     return message
 
 def SQL_status(DATABASE_URL,*SQL_order):
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cursor = conn.cursor()
-    cursor.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.name = ' + "'" + SQL_order[2] +"'"+ ";")
-    cursor.description
-    conn.commit()
+    conn2 = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor2 = conn2.cursor()
+    cursor2.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.name = ' + "'" + SQL_order[2] +"'"+ ";")
+    cursor2.description
+    conn2.commit()
     message = ''
     first = True
     while True:
-        temp = cursor.fetchone()
+        temp = cursor2.fetchone()
         if temp:
             if first:
                 if len(temp)==1:
@@ -59,6 +60,6 @@ def SQL_status(DATABASE_URL,*SQL_order):
                 message = None
                 print('SQL_fetch empty')
             break
-    cursor.close()
-    conn.close()
+    cursor2.close()
+    conn2.close()
     return message
