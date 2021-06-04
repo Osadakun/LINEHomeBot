@@ -1,3 +1,4 @@
+#-*- cording: utf-8 -*-
 import config
 import mylib
 import psycopg2
