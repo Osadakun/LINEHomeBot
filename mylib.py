@@ -36,6 +36,7 @@ def SQL_status(DATABASE_URL,*SQL_order):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
     cursor.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.name = ' + "'" + SQL_order[2] +"'"+ ";")
+    print(cursor.description)
     conn.commit()
     message = ''
     first = True
