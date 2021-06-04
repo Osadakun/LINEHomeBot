@@ -78,7 +78,7 @@ def response_message(event):
             event. reply_token,
             TextSendMessage(text=user_name + 'さんこんにちは‼︎')
         )'''
-    User_name = user_name.strip()
+    User_name = user_name.replace(' ','')
     if User_name == 'としき':
         with open('./brother.json') as t:
             brother_status = json.load(t)
