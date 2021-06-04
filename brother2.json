@@ -1,0 +1,32 @@
+{
+    "type": "template",
+    "altText": "this is a buttons template",
+    "template": {
+        "type": "buttons",
+        "actions": [
+            {
+                "type": "message",
+                "label": "寝てる",
+                "text": "寝てる"
+            },
+            {
+                "type": "message",
+                "label": "外出中",
+                "text": "外出中"
+            },
+            {
+                "type": "message",
+                "label": "外食中",
+                "text": "外食中"
+            },
+            {
+                "type": "message",
+                "label": "温泉いる",
+                "text": "温泉いる"
+            }
+        ],
+    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
+    "title": "としきの情報",
+    "text": "今の状態を選んでください"
+  }
+}
