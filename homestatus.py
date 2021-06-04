@@ -72,14 +72,24 @@ def response_message(event):
     user_name = user_name.encode()
     user_name = user_name.decode()
     if user_name == 'としき':
-        with open('brother.json', encoding='utf-8') as f:
+        f = (."/brother2.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        print(fl)
+        line_bot_api.reply_message(event.reply_token,
+                 [
+                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                 ]
+        fo.close()
+
+        '''with open('brother.json', encoding='utf-8') as f:
             to = json.load(f)            
         line_bot_api.reply_message(event.reply_token,
                 [
                     FlexSendMessage(alt_text='状態を選んでね',contents = to)
                 ]
             )
-        '''with open('./brother2.json') as t:
+        with open('./brother2.json') as t:
             to = json.load(t)
         line_bot_api.reply_message(event.reply_token,
                 [
