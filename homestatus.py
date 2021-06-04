@@ -70,7 +70,7 @@ def response_message(event):
     Text = event.message.text
     user_name = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     #User_name = user_name.strip()
-    conv.conversion(user_name)
+    user_name = conv.conversion(user_name)
     if user_name == 'としき':
         f = ("./brother.json")
         fo = open(f,"r",encoding="utf-8")
