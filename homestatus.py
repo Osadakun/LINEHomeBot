@@ -83,10 +83,8 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_fetch(config.PG_URL,'SELECT status FROM AllStatus where id = ',status)
-            Status = Status.split()[0]
-            Status = Status.encode()
-            Status = Status.decode
+            Status = mylib.SQL_fetch(config.PG_URL,'SELECT status FROM AllStatus where id = ', str(status))
+            Status =conv.conversion(Status)
     else:
         line_bot_api.reply_message(
             event.reply_token,
