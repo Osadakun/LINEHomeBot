@@ -84,7 +84,7 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'UPDATE Family_Member set status = AllStatus.status from AllStatus where AllStatus.id = ', status,user_name)
-            Status =conv.conversion(Status)
+            Status = conv.conversion(Status)
             print(Status)
     else:
         line_bot_api.reply_message(
