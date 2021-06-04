@@ -72,7 +72,7 @@ def response_message(event):
     user_name = user_name.encode()
     user_name = user_name.decode()
     if user_name == 'としき':
-        f = (."/brother2.json")
+        f = ("./brother2.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         print(fl)
