@@ -68,7 +68,7 @@ def callback():
 def response_message(event):
     UserID = event.source.user_id
     Text = event.message.text
-    user_name = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
+    user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     #User_name = user_name.strip()
     user_name = conv.conversion(user_name)
     if user_name == 'としき':
@@ -83,8 +83,9 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_fetch(config.PG_URL,'SELECT status FROM AllStatus where id = ', str(status))
+            Status = mylib.SQL_status(config.PG_URL,'UPDATE Family_Member set status = AllStatus.status from AllStatus where AllStatus.id = ', status,user_name)
             Status =conv.conversion(Status)
+            print(Status)
     else:
         line_bot_api.reply_message(
             event.reply_token,
