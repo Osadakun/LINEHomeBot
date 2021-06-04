@@ -87,7 +87,7 @@ def response_message(event):
     else:
         line_bot_api. reply_message(
             event. reply_token,
-            TextSendMessage(text='あなたは誰？')
+            TextSendMessage(text=user_name)
         )
 
 if __name__ == "__main__":
