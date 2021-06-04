@@ -66,7 +66,8 @@ def callback():
 def response_message(event):
     UserID = event.source.user_id
     user_name = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
-    if not user_name:
+    User_name = user_name.strip()
+    if not User_name:
         line_bot_api. reply_message(
             event. reply_token,
             TextSendMessage(text='あなたは登録されてないよ')
