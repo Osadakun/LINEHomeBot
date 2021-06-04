@@ -84,6 +84,11 @@ def response_message(event):
             event. reply_token,
             FlexSendMessage(alt_text='状態を選んでね',contents = brother_status)
         )
+    else:
+        line_bot_api. reply_message(
+            event. reply_token,
+            TextSendMessage(text='あなたは誰？')
+        )
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
