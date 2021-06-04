@@ -83,7 +83,7 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'UPDATE Family_Member set status = AllStatus.status from AllStatus where AllStatus.id = ', status,user_name)
+            Status = mylib.SQL_status(config.PG_URL,'UPDATE Family_Member set status = AllStatus.status from AllStatus where AllStatus.id = ', str(status), user_name)
             Status = conv.conversion(Status)
             print(Status)
     else:
