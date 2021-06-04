@@ -16,11 +16,6 @@
             },
             {
                 "type": "message",
-                "label": "外食中",
-                "text": "外食中"
-            },
-            {
-                "type": "message",
                 "label": "温泉いる",
                 "text": "温泉いる"
             }
