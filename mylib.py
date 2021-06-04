@@ -3,8 +3,7 @@ import os
 import homestatus
 
 def SQL_name(DATABASE_URL,*SQL_order):
-    con
-    = psycopg2.connect(DATABASE_URL, sslmode='require')
+    con = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor() 
     cursor.execute(SQL_order[0] + "'" + SQL_order[1] + "'"+ ";")
     conn.commit()
