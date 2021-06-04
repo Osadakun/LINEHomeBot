@@ -82,13 +82,13 @@ def response_message(event):
     if User_name == 'としき':
         with open('./brother.json') as t:
             brother_status = json.load(t)
-        line_bot_api. reply_message(
-            event. reply_token,
+        line_bot_api.reply_message(
+            event.reply_token,
             FlexSendMessage(alt_text='状態を選んでね',contents = brother_status)
         )
     else:
-        line_bot_api. reply_message(
-            event. reply_token,
+        line_bot_api.reply_message(
+            event.reply_token,
             TextSendMessage(text=User_name)
         )
 
