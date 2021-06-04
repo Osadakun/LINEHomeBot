@@ -1,6 +1,7 @@
 #-*- cording: utf-8 -*-
 import config
 import mylib
+import conv
 import psycopg2
 from flask import Flask, render_template, g, request, abort
 import os
@@ -69,14 +70,11 @@ def response_message(event):
     Text = event.message.text
     user_name = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     #User_name = user_name.strip()
-    user_name = user_name.split()[0]
-    user_name = user_name.encode()
-    user_name = user_name.decode()
+    conv.conversion(user_name)
     if user_name == 'としき':
         f = ("./brother.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
-        print(fl)
         line_bot_api.reply_message(event.reply_token,
                  [
                      FlexSendMessage(alt_text='状態を選んでね',contents = fl)
@@ -85,8 +83,10 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            print(status)
-            # = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
+            Status = mylib.SQL_fetch(config.PG_URL,'SELECT status FROM AllStatus where id = ',status)
+            Status = Status.split()[0]
+            Status = Status.encode()
+            Status = Status.decode
     else:
         line_bot_api.reply_message(
             event.reply_token,
