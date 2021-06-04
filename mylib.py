@@ -33,15 +33,18 @@ def SQL_name(DATABASE_URL,*SQL_order):
     return message
 
 def SQL_status(DATABASE_URL,*SQL_order):
-    conn2 = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cursor2 = conn2.cursor()
-    cursor2.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.name = ' + "'" + SQL_order[2] +"'"+ ";")
-    cursor2.description
-    conn2.commit()
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor = conn.cursor()
+    cursor.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.name = ' + "'" + SQL_order[2] +"'"+ ";")
+    print(cursor)
+    print(cursor.fechone())
+
+    cursor.description
+    conn.commit()
     message = ''
     first = True
     while True:
-        temp = cursor2.fetchone()
+        temp = cursor.fetchone()
         if temp:
             if first:
                 if len(temp)==1:
@@ -59,6 +62,6 @@ def SQL_status(DATABASE_URL,*SQL_order):
                 message = None
                 print('SQL_fetch empty')
             break
-    cursor2.close()
-    conn2.close()
+    cursor.close()
+    conn.close()
     return message
