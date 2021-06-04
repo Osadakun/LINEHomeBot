@@ -67,7 +67,7 @@ def response_message(event):
     UserID = event.source.user_id
     user_name = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     #User_name = user_name.strip()
-    if not user_name:
+    '''if not user_name:
         line_bot_api. reply_message(
             event. reply_token,
             TextSendMessage(text='あなたは登録されてないよ')
@@ -76,14 +76,14 @@ def response_message(event):
         line_bot_api. reply_message(
             event. reply_token,
             TextSendMessage(text=user_name + 'さんこんにちは‼︎')
+        )'''
+    if user_name == 'としき':
+        with open('./brother.json') as t:
+            brother_status = json.load(t)
+        line_bot_api. reply_message(
+            event. reply_token,
+            FlexSendMessage(alt_text='状態を選んでね',contents = brother_status)
         )
-        if user_name == 'としき':
-            with open('./brother.json') as t:
-                brother_status = json.load(t)
-            line_bot_api. reply_message(
-                event. reply_token,
-                FlexSendMessage(alt_text='状態を選んでね',contents = brother_status)
-            )
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
