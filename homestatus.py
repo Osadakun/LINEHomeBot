@@ -79,6 +79,7 @@ def response_message(event):
             TextSendMessage(text=user_name + 'さんこんにちは‼︎')
         )'''
     User_name = user_name.split()[0]
+    User_name = User_name.encode()
     User_Name = User_name.decode()
     print(User_name)
     print(User_name.encode())
