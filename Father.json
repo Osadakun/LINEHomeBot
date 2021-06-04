@@ -1,63 +1,123 @@
 {
-    "type": "template",
-    "altText": "this is a buttons template",
-    "template": {
-        "type": "buttons",
-        "actions": [
-            {
-                "type": "message",
-                "label": "寝てる",
-                "text": "寝てる"
-            },
-            {
-                "type": "message",
-                "label": "起きてる",
-                "text": "起きてる"
-            },
-            {
-                "type": "message",
-                "label": "家にいる",
-                "text": "家にいる"
-            },
-            {
-                "type": "message",
-                "label": "仕事中",
-                "text": "仕事中"
-            },
-            {
-                "type": "message",
-                "label": "出勤中",
-                "text": "出勤中"
-            },
-            {
-                "type": "message",
-                "label": "会議中",
-                "text": "会議中"
-            },
-            {
-                "type": "message",
-                "label": "仕事中(夜の)",
-                "text": "仕事中(夜の)"
-            },
-            {
-                "type": "message",
-                "label": "買い物中",
-                "text": "買い物中" 
-            },
-            {
-                "type":"message",
-                "label":"外出中",
-                "text":"外出中"
-            },
-            {
-                "type": "message",
-                "label": "運転中",
-                "text": "運転中"
-            }
-
-        ],
-    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
-    "title": "おとうの情報",
-    "text": "今の状態を選んでください"
+  "type": "bubble",
+  "direction": "ltr",
+  "action": {
+    "type": "message",
+    "label": "test",
+    "text": "test"
+  },
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "filler"
+      }
+    ]
+  },
+  "hero": {
+    "type": "image",
+    "url": "https://vos.line-scdn.net/bot-designer-template-images/bot-designer-icon.png",
+    "size": "full",
+    "aspectRatio": "1.51:1",
+    "aspectMode": "fit"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "としきの状態",
+        "align": "center",
+        "contents": []
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "寝てる",
+          "text": "寝てる"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "起きてる",
+          "text": "起きてる"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "仕事中",
+          "text": "仕事中"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "会議中",
+          "text": "会議中"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "買い物中",
+          "text": "買い物中"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "運転中",
+          "text": "運転中"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "仕事中(夜の)",
+          "text": "仕事中(夜の)"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "外出中",
+          "text": "外出中"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "外食中",
+          "text": "外食中"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "出勤中",
+          "text": "出勤中"
+        }
+      }
+    ]
   }
 }

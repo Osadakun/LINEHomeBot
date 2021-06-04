@@ -66,13 +66,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
     UserID = event.source.user_id
+    Text = event.message.text
     user_name = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     #User_name = user_name.strip()
     user_name = user_name.split()[0]
     user_name = user_name.encode()
     user_name = user_name.decode()
     if user_name == 'としき':
-        f = ("./brother2.json")
+        f = ("./brother.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         print(fl)
@@ -82,26 +83,15 @@ def response_message(event):
                  ]
         )
         fo.close()
-
-        '''with open('brother.json', encoding='utf-8') as f:
-            to = json.load(f)            
-        line_bot_api.reply_message(event.reply_token,
-                [
-                    FlexSendMessage(alt_text='状態を選んでね',contents = to)
-                ]
-            )
-        with open('./brother2.json') as t:
-            to = json.load(t)
-        line_bot_api.reply_message(event.reply_token,
-                [
-                    FlexSendMessage(alt_text='状態を選んでね',contents = to)
-                ]
-            )'''
+        if len(Text) > 0:
+            status = stadict[Text]
+            print(status)
+            # = mylib.SQL_fetch(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     else:
         line_bot_api.reply_message(
             event.reply_token,
             [
-                TextSendMessage(text='else')
+                TextSendMessage(text='なにそれ')
             ]
         )
 
