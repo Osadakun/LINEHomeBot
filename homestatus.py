@@ -79,6 +79,8 @@ def response_message(event):
             TextSendMessage(text=user_name + 'さんこんにちは‼︎')
         )'''
     User_name = user_name.split()[0]
+    print(User_name)
+    print(User_name.encode())
     if User_name == 'としき':
         with open('./brother.json') as t:
             brother_status = json.load(t)
@@ -89,7 +91,7 @@ def response_message(event):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=User_name)
+            TextSendMessage(text='else')
         )
 
 if __name__ == "__main__":
