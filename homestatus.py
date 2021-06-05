@@ -62,7 +62,7 @@ def response_message(event):
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
             print(Status)
     elif user_name == 'おとう':
-	f = ("./Father.json")
+	    f = ("./Father.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
@@ -76,7 +76,7 @@ def response_message(event):
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
 
     elif user_name == 'おかあ':
-	f = ("./Mather.json")
+	    f = ("./Mather.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
@@ -90,7 +90,7 @@ def response_message(event):
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
 
     elif user_name == 'なお':
-	f = ("./Sister.json")
+	    f = ("./Sister.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
