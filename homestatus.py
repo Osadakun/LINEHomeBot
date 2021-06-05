@@ -46,7 +46,7 @@ def response_message(event):
     GID = 'Ca9dcb02f93abc60b5e7c428cfd94533a'
     user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     User_name = conv.conversion(user_name)
-    if Text == '連絡'
+    if Text == '連絡':
         if User_name == 'としき':
             f = ("./brother.json")
             fo = open(f,"r",encoding="utf-8")
