@@ -59,8 +59,10 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT status FROM Family_Member WHERE name = ', str(status), user_name)
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member WHERE name = ', str(status), user_name)
             print(Status)
+    else if user_name == 'おとう':
+
     else:
         line_bot_api.reply_message(
             event.reply_token,
