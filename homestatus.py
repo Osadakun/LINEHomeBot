@@ -1,7 +1,12 @@
+#-*- cording: utf-8 -*-
 import config
+import mylib
+import conv
 import psycopg2
 from flask import Flask, render_template, g, request, abort
 import os
+import json
+from linebot.models import *
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -9,20 +14,13 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-from linebot.models import (
-    MessageEvent, TextMessage, MessageAction, TemplateSendMessage,
-    ButtonsTemplate,TextSendMessage)
 
 app = Flask(__name__)
-
-#PG_URL = os.environ["DATABASE_URL"]
-#ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
-#CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
 line_bot_api = LineBotApi(config.ACCESS_TOKEN)
 handler = WebhookHandler(config.CHANNEL_SECRET)
 
-
+stadict = {"起きてる":1,"寝てる":2,"家にいる":3,"仕事中":4,"会議中":5,"仕事中(夜の)":6,"買い物中":7,"運転中":8,"練習中":9,"友達といる":10,"温泉いる":11,"授業中":12,"ラボいる":13,"外食中":14,"出勤中":15,"外出中":16}
 
 
 @app.route("/")
@@ -42,20 +40,78 @@ def callback():
         abort(400)
 
     return 'OK'
-
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
-    dsn = config.PG_URL
-    conn = psycopg2.connect(dsn)
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM Family_Member')
-    return cur
-#   line_bot_api.reply_message(
- #           event.reply_token,
-  #          TextSendMessage(text=cur)
-   # )
-    cur.execue('COMMIT')
+    UserID = event.source.user_id
+    Text = event.message.text
+    user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
+    User_name = conv.conversion(user_name)
+    if User_name == 'としき':
+        f = ("./brother.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                 [
+                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                 ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+            print(Status)
+            Status = conv.bsend(Status)
+            print(Status)
 
+    elif User_name == 'おとう':
+        f = ("./father.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+    
+    elif User_name == 'おかあ':
+        f = ("mother.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+    
+    elif User_name == 'なお':
+        f = ("sister.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        if len(Text) > 0:   
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+    
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            [
+                TextSendMessage(text='なにそれ')
+            ]
+        )
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
