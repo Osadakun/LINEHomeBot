@@ -61,7 +61,7 @@ def response_message(event):
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member WHERE name = ', str(status), user_name)
             print(Status)
-    else if user_name == 'おとう':
+    #else if user_name == 'おとう':
 
     else:
         line_bot_api.reply_message(
