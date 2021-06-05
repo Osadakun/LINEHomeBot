@@ -58,6 +58,14 @@
         "type": "button",
         "action": {
           "type": "message",
+          "label": "家にいる",
+          "text": "家にいる"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
           "label": "練習中",
           "text": "練習中"
         }

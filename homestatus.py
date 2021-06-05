@@ -42,91 +42,86 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
     UserID = event.source.user_id
+    Text = event.message.text
     GID = 'Ca9dcb02f93abc60b5e7c428cfd94533a'
     user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     User_name = conv.conversion(user_name)
-    if event.message.text == '連絡':
-        if User_name == 'としき':
-            f = ("./brother.json")
-            fo = open(f,"r",encoding="utf-8")
-            fl = json.load(fo)
-            line_bot_api.reply_message(event.reply_token,
-                    [
-                        FlexSendMessage(alt_text='状態を選んでね',contents = fl)
-                    ]
-            )
-            Text = event.message.text
-            fo.close()
-            if len(Text) > 0:
-                status = stadict[Text]
-                Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-                Status = conv.bsend(Status)
-                messages = TextSendMessage(text = Status)
-                line_bot_api.push_message(GID, messages = messages)
-
-        elif User_name == 'おとう':
-            f = ("./father.json")
-            fo = open(f,"r",encoding="utf-8")
-            fl = json.load(fo)
-            line_bot_api.reply_message(event.reply_token,
-                    [
-                        FlexSendMessage(alt_text='状態を選んでね',contents = fl)
-                    ]
-            )
-            fo.close()
-            Text = event.message.text
-            if len(Text) > 0:
-                status = stadict[Text]
-                Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-                Status = conv.bsend(Status)
-                messages = TextSendMessage(text = Status)
-                line_bot_api.push_message(GID, messages = messages)
-
-        elif User_name == 'おかあ':
-            f = ("mother.json")
-            fo = open(f,"r",encoding="utf-8")
-            fl = json.load(fo)
-            line_bot_api.reply_message(event.reply_token,
-                    [
-                        FlexSendMessage(alt_text='状態を選んでね',contents = fl)
-                    ]
-            )
-            fo.close()
-            Text = event.message.text
-            if len(Text) > 0:
-                status = stadict[Text]
-                Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-                Status = conv.bsend(Status)
-                messages = TextSendMessage(text = Status)
-                line_bot_api.push_message(GID, messages = messages)
-            
-        elif User_name == 'なお':
-            f = ("sister.json")
-            fo = open(f,"r",encoding="utf-8")
-            fl = json.load(fo)
-            line_bot_api.reply_message(event.reply_token,
-                    [
-                        FlexSendMessage(alt_text='状態を選んでね',contents = fl)
-                    ]
-            )
-            fo.close()
-            Text = event.message.text
-            if len(Text) > 0:   
-                status = stadict[Text]
-                Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-                Status = conv.bsend(Status)
-                messages = TextSendMessage(text = Status)
-                line_bot_api.push_message(GID, messages = messages)
-    
-        else:
-            line_bot_api.reply_message(
-                event.reply_token,
+    if User_name == 'としき':
+        f = ("./brother.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
                 [
-                    TextSendMessage(text='あなたは誰')
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
                 ]
-            )
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+            Status = conv.bsend(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
+
+    elif User_name == 'おとう':
+        f = ("./father.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+            Status = conv.bsend(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
+
+    elif User_name == 'おかあ':
+        f = ("mother.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        Text = event.message.text
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+            Status = conv.bsend(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
+            
+    elif User_name == 'なお':
+        f = ("sister.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        if len(Text) > 0:   
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+            Status = conv.bsend(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
+    
     else:
-        print('out')
+        line_bot_api.reply_message(
+            event.reply_token,
+            [
+                TextSendMessage(text='あなたは誰')
+            ]
+        )
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
