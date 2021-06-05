@@ -37,12 +37,13 @@ def SQL_status(DATABASE_URL,*SQL_order):
     cursor = conn.cursor()
     cursor.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.id = ' + "'" + SQL_order[2] +"'"+ ";")
     print(cursor)
-    print(cursor.fetchone())
+    #print(cursor.fetchone())
     conn.commit()
     message = ''
     first = True
     while True:
-        temp = cursor.fetchone()
+        #temp = cursor.fetchone()
+        temp = cursor.fetchall()
         if temp:
             if first:
                 if len(temp)==1:
