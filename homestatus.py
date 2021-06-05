@@ -58,7 +58,7 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
     
     elif User_name == 'おとう':
         f = ("./father.json")
@@ -72,7 +72,7 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
     
     elif User_name == 'おかあ':
         f = ("./mother.json")
@@ -86,7 +86,7 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
     
     elif User_name == 'なお':
         f = ("./sister.json")
@@ -100,7 +100,7 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:   
             status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
     
     else:
         line_bot_api.reply_message(
