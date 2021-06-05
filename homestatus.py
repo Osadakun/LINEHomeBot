@@ -125,6 +125,7 @@ def response_message(event):
                     TextSendMessage(text='あなたは誰')
                 ]
             )
+    else:
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
