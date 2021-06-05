@@ -60,8 +60,8 @@ def response_message(event):
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
             print(Status)
-            Status = conv.conversion(Status)
-            print(Status)    
+            print(Status[0])    
+            print(Status[1])    
     
     elif User_name == 'おとう':
         f = ("./father.json")
