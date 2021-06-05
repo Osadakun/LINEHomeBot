@@ -35,9 +35,9 @@ def SQL_name(DATABASE_URL,*SQL_order):
 def SQL_status(DATABASE_URL,*SQL_order):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
-    cursor.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.name = ' + "'" + SQL_order[2] +"'"+ ";")
+    cursor.execute('UPDATE Family_Member set status = AllStatus.status from AllStatus where AllStatus.id = ' + SQL_order[1] + ' and ' + 'Family_Member.name = ' + "'" + SQL_order[2] +"'"+ ";")
     conn.commit()
-    cursor.execute('SELECT * FROM Family_Member WHERE name = ' + "'" + SQL_order[2]+ "'" + ";")
+    cursor.execute(SQL_order[0] + "'" + SQL_order[2] +"'"+ ";")
     conn.commit()
     message = ''
     first = True
