@@ -45,9 +45,8 @@ def response_message(event):
     UserID = event.source.user_id
     Text = event.message.text
     user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
-    print(user_name)
-    user_name = conv.conversion(user_name)
-    if user_name == 'としき':
+    User_name = conv.conversion(user_name)
+    if User_name == 'としき':
         f = ("./Brother.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
@@ -61,48 +60,52 @@ def response_message(event):
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
             print(Status)
-    elif user_name == 'おとう':
+            break
+    
+    elif User_name == 'おとう':
 	    f = ("./Father.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
-                 [
-                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
-                 ]
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
         )
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
-
-    elif user_name == 'おかあ':
-	    f = ("./Mather.json")
-        fo = open(f,"r",encoding="utf-8")
-        fl = json.load(fo)
-        line_bot_api.reply_message(event.reply_token,
-                 [
-                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
-                 ]
-        )
-        fo.close()
-        if len(Text) > 0:
-            status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
-
-    elif user_name == 'なお':
-	    f = ("./Sister.json")
-        fo = open(f,"r",encoding="utf-8")
-        fl = json.load(fo)
-        line_bot_api.reply_message(event.reply_token,
-                 [
-                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
-                 ]
-        )
-        fo.close()
-        if len(Text) > 0:
-            status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+            break
     
+    elif User_name == 'おかあ':
+        f = ("./Mather.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+            break
+    
+    elif User_name == 'なお':
+        f = ("./Sister.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                [
+                    FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                ]
+        )
+        fo.close()
+        if len(Text) > 0:   
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+            break
     else:
         line_bot_api.reply_message(
             event.reply_token,
