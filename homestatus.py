@@ -59,11 +59,10 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
-            print(Status)
             break
     
     elif User_name == 'おとう':
-	    f = ("./Father.json")
+        f = ("./Father.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
