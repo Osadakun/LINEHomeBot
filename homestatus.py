@@ -47,7 +47,7 @@ def response_message(event):
     user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     User_name = conv.conversion(user_name)
     if User_name == 'としき':
-        f = ("./Brother.json")
+        f = ("./brother.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
@@ -61,7 +61,7 @@ def response_message(event):
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
     
     elif User_name == 'おとう':
-        f = ("./Father.json")
+        f = ("./father.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
@@ -75,7 +75,7 @@ def response_message(event):
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
     
     elif User_name == 'おかあ':
-        f = ("./Mather.json")
+        f = ("./mother.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
@@ -89,7 +89,7 @@ def response_message(event):
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
     
     elif User_name == 'なお':
-        f = ("./Sister.json")
+        f = ("./sister.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
