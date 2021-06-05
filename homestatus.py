@@ -59,6 +59,7 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'UPDATE Family_Member set status = AllStatus.status from AllStatus where AllStatus.id = ', str(status), UserID)
+            print(Status)
     else:
         line_bot_api.reply_message(
             event.reply_token,
