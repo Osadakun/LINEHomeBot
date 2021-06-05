@@ -22,29 +22,6 @@ handler = WebhookHandler(config.CHANNEL_SECRET)
 
 stadict = {"起きてる":1,"寝てる":2,"家にいる":3,"仕事中":4,"会議中":5,"仕事中(夜の)":6,"買い物中":7,"運転中":8,"練習中":9,"友達といる":10,"温泉いる":11,"授業中":12,"ラボいる":13,"外食中":14,"出勤中":15,"外出中":16}
 
-confirm = {
-    "type": "template",
-    "altText": "this is a confirm template",
-    "template": {
-        "type": "confirm",
-        "actions": [
-            {
-                "type": "message",
-                "label": "はい",
-                "text": "はい"
-            },
-            {
-                "type": "message",
-                "label": "いいえ",
-                "text": "いいえ"
-            }
-        ],
-        "text": "test"
-    }
-}
-
-#confirm_obj = FlexSendMessage.new_from_json_dict(confirm)
-
 
 @app.route("/")
 def hello_world():
@@ -63,12 +40,11 @@ def callback():
         abort(400)
 
     return 'OK'
-#@app.route("/responce", methods=['POST'])
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
     UserID = event.source.user_id
+    Text = event.message.text
     user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
-    #User_name = user_name.strip()
     user_name = conv.conversion(user_name)
     if user_name == 'としき':
         f = ("./brother.json")
@@ -81,7 +57,6 @@ def response_message(event):
         )
         fo.close()
         if len(Text) > 0:
-            Text = event.message.text
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'UPDATE Family_Member set status = AllStatus.status from AllStatus where AllStatus.id = ', str(status), userID)
             Status = conv.conversion(Status)
