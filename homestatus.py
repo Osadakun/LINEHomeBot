@@ -43,6 +43,7 @@ def callback():
 def response_message(event):
     UserID = event.source.user_id
     Text = event.message.text
+    GID = 'Ca9dcb02f93abc60b5e7c428cfd94533a'
     user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
     User_name = conv.conversion(user_name)
     if User_name == 'としき':
@@ -58,9 +59,9 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-            print(Status)
             Status = conv.bsend(Status)
-            print(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
 
     elif User_name == 'おとう':
         f = ("./father.json")
@@ -75,7 +76,10 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-    
+            Status = conv.bsend(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
+
     elif User_name == 'おかあ':
         f = ("mother.json")
         fo = open(f,"r",encoding="utf-8")
@@ -89,7 +93,10 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-    
+            Status = conv.bsend(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
+            
     elif User_name == 'なお':
         f = ("sister.json")
         fo = open(f,"r",encoding="utf-8")
@@ -103,6 +110,9 @@ def response_message(event):
         if len(Text) > 0:   
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
+            Status = conv.bsend(Status)
+            messages = TextSendMessage(text = Status)
+            line_bot_api.push_message(GID, messages = messages)
     
     else:
         line_bot_api.reply_message(
