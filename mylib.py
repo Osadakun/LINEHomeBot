@@ -43,7 +43,7 @@ def SQL_status(DATABASE_URL,*SQL_order):
     first = True
     while True:
         #temp = cursor.fetchone()
-        temp = cursor.fetchone()
+        temp = cursor.fetchall()
         if temp:
             if first:
                 if len(temp)==1:
