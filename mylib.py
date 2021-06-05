@@ -38,8 +38,6 @@ def SQL_status(DATABASE_URL,*SQL_order):
     cursor.execute(SQL_order[0] + SQL_order[1] + ' and ' + 'Family_Member.id = ' + "'" + SQL_order[2] +"'"+ ";")
     print(cursor)
     print(cursor.fetchone())
-
-    cursor.description
     conn.commit()
     message = ''
     first = True
