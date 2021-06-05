@@ -126,6 +126,7 @@ def response_message(event):
                 ]
             )
     else:
+        print('out')
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
