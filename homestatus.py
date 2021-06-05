@@ -48,7 +48,7 @@ def response_message(event):
     print(user_name)
     user_name = conv.conversion(user_name)
     if user_name == 'としき':
-        f = ("./brother.json")
+        f = ("./Brother.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
@@ -59,10 +59,50 @@ def response_message(event):
         fo.close()
         if len(Text) > 0:
             status = stadict[Text]
-            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member WHERE name = ', str(status), user_name)
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
             print(Status)
-    #else if user_name == 'おとう':
+    else if user_name == 'おとう':
+	f = ("./Father.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                 [
+                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                 ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
 
+    else if user_name == 'おかあ':
+	f = ("./Mather.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                 [
+                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                 ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+
+    else if user_name == 'なお':
+	f = ("./Sister.json")
+        fo = open(f,"r",encoding="utf-8")
+        fl = json.load(fo)
+        line_bot_api.reply_message(event.reply_token,
+                 [
+                     FlexSendMessage(alt_text='状態を選んでね',contents = fl)
+                 ]
+        )
+        fo.close()
+        if len(Text) > 0:
+            status = stadict[Text]
+            Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
+    
     else:
         line_bot_api.reply_message(
             event.reply_token,
