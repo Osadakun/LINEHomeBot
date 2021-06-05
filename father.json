@@ -90,8 +90,8 @@
         "type": "button",
         "action": {
           "type": "message",
-          "label": "仕事中(夜の)",
-          "text": "仕事中(夜の)"
+          "label": "仕事中【夜の】",
+          "text": "仕事中【夜の】"
         }
       },
       {

@@ -6,10 +6,7 @@ def conversion(token):
 
 def bsend(token):
     token = token.replace('[','')
-    token = token.replace('(','',4)
     token = token.replace('),','\n')
     token = token.replace("'",'',16)
     token = token.replace(']','')
-    token = token.replace(')','')
-    token = token.replace('  ,','',4)
     return token
