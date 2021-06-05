@@ -59,7 +59,7 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-    
+            print(Status)    
     elif User_name == 'おとう':
         f = ("./father.json")
         fo = open(f,"r",encoding="utf-8")
