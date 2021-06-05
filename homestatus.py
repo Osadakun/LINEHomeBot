@@ -64,7 +64,7 @@ def response_message(event):
             print(Status)
 
     elif User_name == 'おとう':
-        f = ("./brother.json")
+        f = ("./father.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
