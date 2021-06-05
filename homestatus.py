@@ -45,6 +45,7 @@ def response_message(event):
     UserID = event.source.user_id
     Text = event.message.text
     user_name = mylib.SQL_name(config.PG_URL,'SELECT name FROM Family_Member where id = ',UserID)
+    print(user_name)
     user_name = conv.conversion(user_name)
     if user_name == 'としき':
         f = ("./brother.json")
