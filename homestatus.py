@@ -61,7 +61,7 @@ def response_message(event):
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
             print(Status)
-    else if user_name == 'おとう':
+    elif user_name == 'おとう':
 	f = ("./Father.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
@@ -75,7 +75,7 @@ def response_message(event):
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
 
-    else if user_name == 'おかあ':
+    elif user_name == 'おかあ':
 	f = ("./Mather.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
@@ -89,7 +89,7 @@ def response_message(event):
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status))
 
-    else if user_name == 'なお':
+    elif user_name == 'なお':
 	f = ("./Sister.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
