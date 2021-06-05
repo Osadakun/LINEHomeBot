@@ -59,7 +59,7 @@ def response_message(event):
         if len(Text) > 0:
             status = stadict[Text]
             Status = mylib.SQL_status(config.PG_URL,'SELECT name,status FROM Family_Member;', str(status),User_name)
-            Status = conv.bsend(Status)
+#            Status = conv.bsend(Status)
             messages = TextSendMessage(text = Status)
             line_bot_api.push_message(GID, messages = messages)
 
