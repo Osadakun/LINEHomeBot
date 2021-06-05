@@ -62,3 +62,4 @@ def SQL_status(DATABASE_URL,*SQL_order):
             break
     cursor.close()
     conn.close()
+    return message
