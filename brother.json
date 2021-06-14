@@ -15,13 +15,6 @@
       }
     ]
   },
-  "hero": {
-    "type": "image",
-    "url": "https://vos.line-scdn.net/bot-designer-template-images/bot-designer-icon.png",
-    "size": "full",
-    "aspectRatio": "1.51:1",
-    "aspectMode": "fit"
-  },
   "body": {
     "type": "box",
     "layout": "vertical",
@@ -42,16 +35,16 @@
         "type": "button",
         "action": {
           "type": "message",
-          "label": "寝てる",
-          "text": "寝てる"
+          "label": "おはよう",
+          "text": "おはよう"
         }
       },
       {
         "type": "button",
         "action": {
           "type": "message",
-          "label": "起きてる",
-          "text": "起きてる"
+          "label": "おやすみ",
+          "text": "おやすみ"
         }
       },
       {
@@ -100,14 +93,6 @@
           "type": "message",
           "label": "外出中",
           "text": "外出中"
-        }
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "message",
-          "label": "外食中",
-          "text": "外食中"
         }
       },
       {

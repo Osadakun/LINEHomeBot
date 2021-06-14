@@ -15,14 +15,6 @@
       }
     ]
   },
-  "hero": {
-    "type": "image",
-    "url": "https://vos.line-scdn.net/bot-designer-template-images/bot-designer-icon.png",
-    "size": "full",
-    "aspectRatio": "1.51:1",
-    "aspectMode": "fit"
-  },
-  "body": {
     "type": "box",
     "layout": "vertical",
     "contents": [
@@ -42,24 +34,40 @@
         "type": "button",
         "action": {
           "type": "message",
-          "label": "寝てる",
-          "text": "寝てる"
+          "label": "おはよう",
+          "text": "おはよう"
         }
       },
       {
         "type": "button",
         "action": {
           "type": "message",
-          "label": "起きてる",
-          "text": "起きてる"
+          "label": "おやすみ",
+          "text": "おやすみ"
         }
       },
       {
         "type": "button",
         "action": {
           "type": "message",
-          "label": "家にいる",
-          "text": "家にいる"
+          "label": "在宅中",
+          "text": "在宅中"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "行ってきます",
+          "text": "行ってきます"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "帰ります",
+          "text": "帰ります"
         }
       },
       {
@@ -90,32 +98,8 @@
         "type": "button",
         "action": {
           "type": "message",
-          "label": "運転中",
-          "text": "運転中"
-        }
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "message",
-          "label": "友達といる",
-          "text": "友達といる"
-        }
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "message",
           "label": "外出中",
           "text": "外出中"
-        }
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "message",
-          "label": "外食中",
-          "text": "外食中"
         }
       }
     ]
