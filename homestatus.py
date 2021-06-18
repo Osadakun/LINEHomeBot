@@ -99,7 +99,7 @@ def response_message(event):
             line_bot_api.push_message(GID, messages = messages)
             
     elif User_name == 'なお':
-        f = ("./status-contents/sister.json")
+        f = ("./status_contents/sister.json")
         fo = open(f,"r",encoding="utf-8")
         fl = json.load(fo)
         line_bot_api.reply_message(event.reply_token,
